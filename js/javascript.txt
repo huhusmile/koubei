@@ -1,0 +1,44 @@
+function showLights(){
+	handle = setInterval("light();",1500);
+}
+
+var curIndex = 1;
+function light(){
+    document.getElementById('lbright').innerHTML = curIndex;
+
+    //将所有的DIV都设置为灰色背景
+	for (var i = 1; i <= 4; i++) {
+		var ele = document.getElementById('ksnavload' + i);
+		ele.style.backgroundImage = "url(../images/T1c3z1Xm.png) repeat-x";
+		ele.style.backgroundPosition = "0 0";
+	}
+
+    var ele = document.getElementById('ksnavload' + curIndex);
+    ele.style.backgroundImage = "url(../images/T1c3z1Xm.png) repeat-x";
+    ele.style.backgroundPosition = "0 -10px";
+
+    var iwe = document.getElementById('lbSlide');
+    iwe.style.backgroundImage = "url(../images/XXXcQhuY.jpg) repeat-x";
+    iwe.style.backgroundPosition = "0 0";
+    document.getElementById('lbleft').innerHTML = iwe.style.backgroundImage;
+    curIndex = (curIndex) % 4 + 1;
+}
+
+
+function divcli(index,flag){
+	if (flag == 1) {
+        clearInterval(handle);
+        for (var i = 1; i <= 4; i++) {
+        	var ele = document.getElementById('ksnavload' + i);
+		    ele.style.backgroundImage = "url(../images/T1c3z1Xm.png) repeat-x";
+		    ele.style.backgroundPosition = "0 0";
+        }
+        var ele = document.getElementById('ksnavload' + curIndex);
+        ele.style.backgroundImage = "url(../images/T1c3z1Xm.png) repeat-x";
+        ele.style.backgroundPosition = "0 -10px";
+        curIndex = index;
+	}
+	else{
+		handle = setInterval("light();",500);
+	}
+}
